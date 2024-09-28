@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 180px;
+  
+  background: #3494E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.div-input-today{
+  display: flex;
+  width: 750px;
+  margin-right: 200px;
+}
+
+.div-input{
+  height: max-content;
+  display: flex;
+  box-shadow: #fff 0 0 30px 10px;
+  background-color: #ffffffb4;
+  transition: box-shadow 0.3s ease;
+  margin: auto;
+}
+.div-input:hover{
+  box-shadow: #fff 0 0 50px 20px;
+
+}
+
+.cityInput {
+  outline: none;
+  width: 250px;
+  box-shadow: inset #ca6fff 0 0 0 2px;
+  border: 0;
+  background: #f1ffef;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 0px 12px;
+  color: #1e5c2f;
+  font-size: 22px;
+  font-weight: 400;
+  height: 50px;  
+}
+/* .cityInput:hover{
+  box-shadow: inset #cb70ff 0 0 0 2px;
+}
+.cityInput:focus{
+  box-shadow: inset #cb70ff 0 0 0 2px;
+}
+.cityInput::placeholder{
+  color: #cb70ff;
+} */
+
+.inputButton{
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;  
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: inset #5db6ff 0 0 0 2px;
+  padding: 13px 23px;
+  border: 0;
+  background: #f1ffef;
+  
+}
+.inputButton:hover{
+  box-shadow: #5db6ff 0 0 0 2px;
+}
+.inputButton:active {
+  transform: scale(0.93); /* Buton biraz küçülüyor, basılma efekti */
+  background-color: #2483ff; /* Butonun rengi değişebilir */
+}
+
+.top-section{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.today-card{
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 180px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.514);
+  border-radius: 12px;
+  border: 2px solid #fff;
+  box-shadow: #fff 0 0 15px 2px;
+}
+
+.div-other-days{
+  display: flex;
+  margin-top: 100px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.other-days{
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 180px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.514);
+  border-radius: 12px;
+  border: 2px solid #fff;
+}
+
+.city-name{
+  width: 300px;
+  height: 150px;
+  font-size: 70px;
+  margin-top: 50px;
+  color: #ffffff;
+}
