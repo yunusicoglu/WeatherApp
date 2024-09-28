@@ -14,6 +14,7 @@ const [formattedWeatherData, setFormattedWeatherData] = useState(null)
         const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API}&q=${cityInput}&days=9&aqi=yes&alerts=yes`)
         setWeatherData(response.data)
         console.log(response.data);
+        console.log(import.meta.env.VITE_WEATHER_API);
 
       } catch (error) {
         console.log(error);
