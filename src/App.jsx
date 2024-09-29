@@ -11,7 +11,7 @@ const [formattedWeatherData, setFormattedWeatherData] = useState(null)
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API}&q=${cityInput}&days=9&aqi=yes&alerts=yes`)
+        const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=630b0db8e95e45998a7172611242409&q=${cityInput}&days=9&aqi=yes&alerts=yes`)
         setWeatherData(response.data)
         console.log(response.data);
         console.log(import.meta.env.VITE_WEATHER_API);
