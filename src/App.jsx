@@ -2,16 +2,19 @@ import { useEffect } from 'react'
 import './App.css'
 import { useState } from 'react'
 import axios from 'axios'
+import { CiSearch } from 'react-icons/ci'
 
 function App() {
 const [cityInput, setCityInput] = useState('')
+// const [city, setCity] = useState('')
 const [weatherData, setWeatherData] = useState(null)
 const [formattedWeatherData, setFormattedWeatherData] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
+      const city = cityInput ? cityInput : 'istanbul'
       try {
-        const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=630b0db8e95e45998a7172611242409&q=${cityInput}&days=9&aqi=yes&alerts=yes`)
+        const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=630b0db8e95e45998a7172611242409&q=${city}&days=9&aqi=yes&alerts=yes`)
         setWeatherData(response.data)
         console.log(response.data);
         console.log(import.meta.env.VITE_WEATHER_API);
@@ -60,6 +63,8 @@ const [formattedWeatherData, setFormattedWeatherData] = useState(null)
   return (
     <>
       <div className='main'>
+        <div className=''>
+        </div>
         <div className='top-section'>
           <div className='city-name'>{formattedWeatherData?.location.region}</div>
           <div className='div-input-today'>
@@ -71,6 +76,7 @@ const [formattedWeatherData, setFormattedWeatherData] = useState(null)
                 onChange={handleInputChange}
                 placeholder='Bir şehir giriniz...'
               />
+              <div className='div-icon'><CiSearch style={{color:"white", fontSize:"30px", marginRight:"10px"}}/></div>
             </div>
             <div className='today-card'>
               {formattedWeatherData && (
