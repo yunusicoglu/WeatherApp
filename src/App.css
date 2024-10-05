@@ -23,6 +23,13 @@
     align-items: center;
   }
 }
+@media (max-width: 530px){
+  .main{
+    background-image: none;
+    background: linear-gradient(to bottom, #80cde4 0%, #80cde4 2%, #dff7ff 10%, #dff7ff 100%);
+    height: 3000px;
+  }
+}
 
 
 .top-section{
@@ -103,6 +110,11 @@
     margin-left: 0;
   }
 }
+@media (max-width: 530px) {
+  .today-card{
+    box-shadow: #cecece 0 0 15px 2px;
+  }
+}
 
 .div-all-other-days{
   height: min-content;
@@ -159,7 +171,11 @@
     width: 70%;
   }
 }
-
+@media (max-width: 530px) {
+  .other-days{
+    box-shadow: #cecece 0 0 15px 2px;
+  }
+}
 .city-name{
   will-change: filter, opacity;
   min-width: 300px;
@@ -169,36 +185,82 @@
   color: #ffffff;
   margin-right: 20px;
   margin-left: 30px;
-  -webkit-animation: text-focus-in 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: text-focus-in 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  /* -webkit-animation: text-focus-in 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both; */
+	        /* animation: text-focus-in 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both; */
 }
 @media (max-width: 1180px) {
   .city-name{
     margin-top: 0;
   }
 }
-/* city-name animation */
- @-webkit-keyframes text-focus-in {
-  0% {
-    -webkit-filter: blur(12px);
-            filter: blur(12px);
-    opacity: 0;
+
+
+@media (max-width: 530px) {
+  .cloud {
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0), hsla(0,0%,0%,.1));
+    border-radius: 1em;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,100%,.5);
+    display: inline-block;
+    height: 1em;
+    margin-left: -1.5em;
+    position: absolute;
+    width: 3em;
+    filter: drop-shadow(0 2px 3px hsla(0,0%,0%,.25));
   }
-  100% {
-    -webkit-filter: blur(0px);
-            filter: blur(0px);
-    opacity: 1;
+  .cloud:after,
+  .cloud:before {
+    background-color: #fff;
+    content: '';
+    border-radius: 100%;
+    position: absolute;
+  }
+  .cloud:after {
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0) 50%, hsla(0,0%,0%,.025));
+    height: 1em;
+    right: .4em;
+    top: -.5em;
+    width: 1em;
+  }
+  .cloud:before {
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0) 50%, hsla(0,0%,0%,.075));
+    height: 1.6em;
+    left: .4em;
+    top: -.75em;
+    width: 1.6em;
+  }  
+}
+
+.bg-hills{
+  align-self: flex-end;
+  height: 200px;
+  width: 100%;
+  display: none;
+  background-image: url('./assets/hill-foto.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+@media (max-width:530px){
+  .bg-hills{
+    display: block;
   }
 }
-@keyframes text-focus-in {
-  0% {
-    -webkit-filter: blur(12px);
-            filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0px);
-            filter: blur(0px);
-    opacity: 1;
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.arrow{
+  display: none;
+  position: relative;
+  bottom: -40px
+}
+@media (max-width:530px){
+  .arrow{
+    display: block;
   }
 }
