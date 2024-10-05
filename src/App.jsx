@@ -5,6 +5,8 @@ import axios from 'axios'
 import { CiSearch } from 'react-icons/ci'
 import { motion } from 'framer-motion'
 import Arrow from './Arrow'
+import TopSection from './TopSection'
+import OtherDays from './OtherDays'
 
 
 function App() {
@@ -83,31 +85,12 @@ function App() {
   const handleInputChange = (e) => {
     setCityInput(e.target.value)
   }
+  
 
-  //other days' animation
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3, 
-        staggerChildren: 0.2
-      }
-    }
-  };  
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
   
 
   return (
     <>
-
       <div className='main'>
         {/* mobil ekranı bulutlar */}
         <div className='cloud' style={{left:'18%', top:'6%'}} ></div>
@@ -115,98 +98,13 @@ function App() {
         <div className='cloud' style={{left:'88%', top:'8%'}} ></div>
 
         <motion.div className='top-section'  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}}>
-          <motion.div className='city-name' initial={{opacity:0}} animate={{opacity:cityOpacity}}>{formattedWeatherData?.location.region}</motion.div>
-          <div className='div-input' >
-            <input 
-              className='city-input' 
-              type="text"
-              value={cityInput} 
-              onChange={handleInputChange}
-              placeholder='Bir şehir giriniz...'
-            />
-            <div className='div-icon'><CiSearch style={{color:"white", fontSize:"30px", marginRight:"10px"}}/></div>
-          </div>
-          <div className='today-card'>
-            {formattedWeatherData && (
-              <div>
-                <div style={{display:"flex", justifyContent:"center", fontSize:"22px"}}>
-                  {formattedWeatherData?.forecast.forecastday[0].dayname}
-                </div>
-                <div style={{display:"flex", justifyContent:"center", fontSize:"13px", marginTop:"5px"}}>
-                  ({formattedWeatherData?.forecast.forecastday[0].date})
-                </div>
-                <motion.div key={formattedWeatherData?.location.region}
-                  animate={{
-                    filter: ["blur(0px)", "blur(25px)", "blur(0px)"], // Sadece blur efekti
-                  }}
-                  transition={{
-                    duration: 0.4, // Animasyon süresi
-                    ease: "easeOut", // Geçiş şekli
-                  }}
-                >
-                  <div style={{display:"flex", justifyContent:"center"}}>
-                    <img 
-                      src={formattedWeatherData?.forecast.forecastday[0].day.condition.icon} 
-                      alt={formattedWeatherData?.forecast.forecastday[0].day.condition.text} 
-                    />
-                  </div>
-                  <div style={{display:"flex", justifyContent:"center", fontSize:"20px"}}>
-                    {Math.floor(formattedWeatherData?.forecast.forecastday[0].day.avgtemp_c)}°
-                  </div>
-                </motion.div>
-              </div>
-            )}
-          </div>
+          {formattedWeatherData && <TopSection formattedWeatherData={formattedWeatherData} cityInput={cityInput} handleInputChange={handleInputChange} cityOpacity={cityOpacity} />}
         </motion.div>
         {/* mobil ekranlarda asagi kaydirmayi hatirlatan ok */}
         <div className='arrow'>
           <Arrow/>
         </div>
-        { formattedWeatherData &&
-          (
-            <motion.div className='div-all-other-days' 
-              variants={container}
-              initial="hidden"
-              animate="visible">
-
-              {formattedWeatherData.forecast.forecastday.map((day,i) => (
-                i === 0 
-                ? null 
-                : (
-                    <motion.div className='div-other-days' key={day.date} variants={item}>
-                      <div className='other-days'>
-                        <div style={{display:"flex", justifyContent:"center", fontSize:"22px"}}>
-                          {day.dayname}
-                        </div>
-                        <div style={{display:"flex", justifyContent:"center", fontSize:"13px", marginTop:"5px"}}>
-                          ({day.date})
-                        </div>
-                        <motion.div key={formattedWeatherData?.location.region}
-                          animate={{
-                            filter: ["blur(0px)", "blur(25px)", "blur(0px)"], // Sadece blur efekti
-                          }}
-                          transition={{
-                            duration: 0.4, // Animasyon süresi
-                            ease: "easeOut", // Geçiş şekli
-                          }} 
-                        >
-                          <div style={{display:"flex", justifyContent:"center"}}>
-                            <img 
-                              src={day.day.condition.icon} 
-                              alt={day.day.condition.text} 
-                            />
-                          </div>
-                          <div style={{display:"flex", justifyContent:"center", fontSize:"20px"}}>
-                            {Math.floor(day.day.avgtemp_c)}°
-                          </div>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                )
-              ))} 
-            </motion.div>
-          )
-        }
+        {formattedWeatherData && <OtherDays formattedWeatherData={formattedWeatherData}/>}
         <div className={`bg-hills ${isHillsVisible ? 'visible' : 'invisible'}`}/>
       </div>
     </>
