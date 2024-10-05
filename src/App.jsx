@@ -107,7 +107,7 @@ function App() {
 
   return (
     <>
-        
+
       <div className='main'>
         {/* mobil ekranı bulutlar */}
         <div className='cloud' style={{left:'18%', top:'6%'}} ></div>
@@ -157,11 +157,11 @@ function App() {
               </div>
             )}
           </div>
-          {/* kisa ekranlarda asagi kaydirmayi hatirlatan ok */}
-          <div className='arrow'>
-            <Arrow/>
-          </div>
         </motion.div>
+        {/* mobil ekranlarda asagi kaydirmayi hatirlatan ok */}
+        <div className='arrow'>
+          <Arrow/>
+        </div>
         { formattedWeatherData &&
           (
             <motion.div className='div-all-other-days' 
