@@ -257,7 +257,7 @@
 .arrow{
   display: none;
   position: absolute;
-  bottom: 25px
+  top: 650px
 }
 @media (max-width:530px){
   .arrow{
